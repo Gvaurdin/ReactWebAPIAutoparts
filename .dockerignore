@@ -1,0 +1,32 @@
+# Node.js & NPM
+node_modules/
+npm-debug.log
+yarn-error.log
+*.log
+
+# Build files
+dist/
+build/
+.DS_Store
+
+# IDE & OS
+.vscode/
+.idea/
+*.iml
+
+# Logs
+logs/
+*.log
+debug.log
+
+# Git
+.git/
+.gitignore
+
+# Docker
+Dockerfile
+docker-compose.override.yml
+
+# Cache & Linting
+.eslintcache
+.npm/

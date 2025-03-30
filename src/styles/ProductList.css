@@ -1,0 +1,40 @@
+.product-list-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .add-product-button {
+    display: block;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .add-product-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .product-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .product-list li {
+    margin: 10px 0;
+  }
+  
+  .product-link {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 18px;
+  }
+  
+  .product-link:hover {
+    text-decoration: underline;
+  }
+  

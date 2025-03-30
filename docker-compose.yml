@@ -1,0 +1,13 @@
+services:
+  react-autoparts-app:
+    container_name: react_app
+    build:
+      context: ./
+      dockerfile: Docker/react/Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - autoparts_network  # Подключаем контейнер к сети
+networks:
+  autoparts_network:
+    driver: bridge 
