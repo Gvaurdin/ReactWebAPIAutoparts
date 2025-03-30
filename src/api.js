@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:8080'  // Используйте имя контейнера PHP API
+    baseURL: 'http://185.50.203.159'
 });
 
 export const fetchProducts = () => api.get('/products');
