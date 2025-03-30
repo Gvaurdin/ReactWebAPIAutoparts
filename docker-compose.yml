@@ -6,8 +6,3 @@ services:
       dockerfile: Docker/react/Dockerfile
     ports:
       - "3000:3000"
-    networks:
-      - autoparts_network  # Подключаем контейнер к сети
-networks:
-  autoparts_network:
-    driver: bridge 

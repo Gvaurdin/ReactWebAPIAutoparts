@@ -16,14 +16,11 @@ FROM node:16-alpine
 
 WORKDIR /usr/src/app
 
-# Устанавливаем только нужный пакет serve
-RUN npm install -g serve && npm cache clean --force
-
 # Копируем только собранные файлы, без исходников
 COPY --from=build /usr/src/app/build /usr/src/app/build
 
 # Открываем порт 3000
 EXPOSE 3000
 
-# Запускаем serve
-CMD ["serve", "-s", "build", "-l", "3000"]
+# Запускаем приложение через Nginx или другим способом
+# В этом случае не используем serve
