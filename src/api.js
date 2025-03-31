@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://185.50.203.159'
+    baseURL: 'http://185.50.203.159/api'
 });
 
 export const fetchProducts = () => api.get('/products');
