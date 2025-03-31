@@ -6,3 +6,9 @@ services:
       dockerfile: Docker/react/Dockerfile
     ports:
       - "3000:3000"
+    networks:
+      - autoparts_network
+
+networks:
+  autoparts_network:
+    external: true
