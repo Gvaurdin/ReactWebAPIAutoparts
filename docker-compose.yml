@@ -5,6 +5,8 @@ services:
       context: ./
       dockerfile: Docker/react/Dockerfile
     restart: always
+    volumes:
+      - /var/www/react-app:/usr/src/app
     ports:
       - "3000:80"
     networks:
