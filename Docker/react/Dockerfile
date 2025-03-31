@@ -1,26 +1,26 @@
-# 1. Используем Node.js для сборки проекта
+# 1. Используем Node.js для сборки React-приложения
 FROM node:16 AS build
 
 WORKDIR /usr/src/app
 
-# Копируем package.json и устанавливаем только production-зависимости
 COPY package*.json ./
 RUN npm install --frozen-lockfile
 
-# Копируем весь код и собираем React-приложение
 COPY . .
 RUN npm run build
 
-# 2. Минимальный образ Node.js для запуска
-FROM node:16-alpine
+# 2. Используем Nginx для раздачи статических файлов
+FROM nginx:alpine
 
-WORKDIR /usr/src/app
+# Удаляем дефолтную конфигурацию
+RUN rm /etc/nginx/conf.d/default.conf
 
-# Копируем только собранные файлы, без исходников
-COPY --from=build /usr/src/app/build /usr/src/app/build
+# Копируем конфиг для Nginx
+COPY ./Docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 
-# Открываем порт 3000
-EXPOSE 3000
+# Копируем собранные файлы React
+COPY --from=build /usr/src/app/build /usr/share/nginx/html
 
-# Запускаем приложение через Nginx или другим способом
-# В этом случае не используем serve
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
