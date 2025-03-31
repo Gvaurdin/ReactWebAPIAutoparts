@@ -1,9 +1,9 @@
 services:
   react-autoparts-app:
+    container_name: react_app
     build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: react-autoparts-app
+      context: ./
+      dockerfile: Docker/react/Dockerfile
     restart: always
     networks:
       - autoparts_network
