@@ -19,7 +19,7 @@ const ProductList = () => {
 
         // Извлекаем данные из response.data.data
         if (response.data.success && Array.isArray(response.data.data)) {
-          setProducts(response.data.data); // Обновляем состояние с данными продуктов
+          setProducts(response.data.data);
         } else {
           console.error('Error:', response.data.message || 'Unknown error');
         }
