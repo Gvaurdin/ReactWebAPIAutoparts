@@ -1,0 +1,37 @@
+name: Deploy React Web API
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Add SSH Known Hosts
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+
+    - name: Deploy React App
+      env:
+        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      run: |
+        ssh -i <(echo "${{ secrets.SSH_PRIVATE_KEY }}") root@gsa-top.ru "
+          set -e
+          cd /var/www/react-app
+          if git fetch origin main && git status | grep -q 'behind'; then
+            git pull origin main
+            docker-compose -f /var/www/docker-compose.yml up -d --build --force-recreate react-autoparts-app
+            docker ps --filter 'name=react-autoparts-app'
+          else
+            echo 'No changes detected, skipping deployment.'
+          fi
+        "
