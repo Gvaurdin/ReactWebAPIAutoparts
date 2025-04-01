@@ -29,8 +29,8 @@ const AddProduct = ({ onClose, refreshProductList }) => {
       console.log('Ответ API:', response);
       if (response.data.success) {
         alert('Запчасть успешно добавлена!');
-        onClose(); // Закрытие формы
-        refreshProductList(); // Обновление списка продуктов
+        onClose();
+        refreshProductList();
       } else {
         setError('Не удалось добавить запчасть.');
       }
