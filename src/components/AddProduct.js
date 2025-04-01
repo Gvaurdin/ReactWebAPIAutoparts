@@ -26,7 +26,7 @@ const AddProduct = ({ onClose, refreshProductList }) => {
     e.preventDefault();
     try {
       const response = await createProduct(product);
-      console.log('Ответ API:', response); // Проверяем, есть ли ответ от сервера
+      console.log('Ответ API:', response);
       if (response.data.success) {
         alert('Запчасть успешно добавлена!');
         onClose(); // Закрытие формы
