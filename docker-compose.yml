@@ -7,6 +7,9 @@ services:
     restart: always
     volumes:
       - /var/www/react-app:/usr/src/app
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
+      - com.centurylinklabs.watchtower.lifecycle.pre-update=/hooks/update.sh
     ports:
       - "3000:80"
     networks:
