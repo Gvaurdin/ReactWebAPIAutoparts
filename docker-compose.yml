@@ -10,9 +10,10 @@ services:
     ports:
       - "3000:80"
     networks:
-      autoparts_network:
+      autoparts_network-react:
         ipv4_address: 192.168.32.10
 
 networks:
-  autoparts_network:
-    external: true
+  autoparts_network-react:
+    name: autoparts_network-react
+    driver: bridge
