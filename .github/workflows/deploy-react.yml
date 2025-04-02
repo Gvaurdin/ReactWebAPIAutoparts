@@ -33,7 +33,7 @@ jobs:
           cd /home/gvaurdin/ReactWebAPIAutoparts
           if git fetch origin main && git status | grep -q 'behind'; then
             git pull origin main
-            docker-compose -f home/gvaurdin/ReactWebAPIAutoparts/docker-compose.yml up -d --build --force-recreate react-autoparts-app
+            docker-compose -f /home/gvaurdin/ReactWebAPIAutoparts/docker-compose.yml up -d --build --force-recreate react-autoparts-app
             docker ps --filter 'name=react-app'
           else
             echo 'No changes detected, skipping deployment.'
