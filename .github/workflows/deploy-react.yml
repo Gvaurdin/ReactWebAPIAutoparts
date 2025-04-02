@@ -24,7 +24,7 @@ jobs:
       env:
         SSH_AUTH_SOCK: /tmp/ssh_agent.sock
       run: |
-        ssh -i <(echo "${{ secrets.SSH_PRIVATE_KEY }}") root@gsa-top.ru "
+        ssh -i <(echo "${{ secrets.SSH_PRIVATE_KEY }}") gvaurdin@gsa-top.ru "
           set -e
           cd /var/www/react-app
           if git fetch origin main && git status | grep -q 'behind'; then
