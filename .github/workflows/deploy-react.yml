@@ -32,13 +32,7 @@ jobs:
           cd /home/gvaurdin/ReactWebAPIAutoparts
           docker-compose down
         "
-    - name: Setup Docker Network
-      run: |
-        ssh -i ~/.ssh/id_ed25519 gvaurdin@gsa-top.ru "
-          if ! docker network inspect autoparts_network >/dev/null 2>&1; then
-            docker network create --driver bridge --subnet=192.168.31.0/20 autoparts_network-react
-          fi
-        "
+        
     - name: Deploy React App
       run: |
         ssh -i ~/.ssh/id_ed25519 gvaurdin@gsa-top.ru "
