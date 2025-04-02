@@ -36,7 +36,7 @@ jobs:
       run: |
         ssh -i ~/.ssh/id_ed25519 gvaurdin@gsa-top.ru "
           if ! docker network inspect autoparts_network >/dev/null 2>&1; then
-            docker network create --driver bridge --subnet=192.168.32.0/20 autoparts_network-react
+            docker network create --driver bridge --subnet=192.168.31.0/20 autoparts_network-react
           fi
         "
     - name: Deploy React App
