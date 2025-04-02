@@ -29,7 +29,7 @@ const ProductDetail = () => {
       try {
         await deleteProduct(id);
         alert('Запчасть удалена');
-        navigate('/'); // Перенаправляем на главную страницу
+        navigate('/');
       } catch (error) {
         alert('Ошибка удаления');
       }
@@ -37,7 +37,7 @@ const ProductDetail = () => {
   };
 
   const handleEdit = () => {
-    navigate(`/edit-product/${id}`); // Переход на страницу редактирования
+    navigate(`/edit-product/${id}`);
   };
 
   if (loading) return <div>Загрузка...</div>;

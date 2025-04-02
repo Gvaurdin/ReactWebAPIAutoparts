@@ -14,10 +14,10 @@ const ProductList = () => {
       try {
         const response = await fetchProducts();
 
-        // Логируем полный ответ для диагностики
+        // логируем полный ответ для диагностики
         console.log(response);
 
-        // Извлекаем данные из response.data.data
+        // извлекаем данные из response.data.data
         if (response.data.success && Array.isArray(response.data.data)) {
           setProducts(response.data.data);
         } else {
@@ -34,24 +34,24 @@ const ProductList = () => {
   }, []);
 
   const handleAddProductClick = () => {
-    setShowAddProductForm(true); // Показываем форму добавления
+    setShowAddProductForm(true); // показываем форму добавления
   };
 
   const handleCloseForm = () => {
-    setShowAddProductForm(false); // Закрываем форму
+    setShowAddProductForm(false); // закрываем форму
   };
 
   const refreshProductList = async () => {
-    setLoading(true); // Чтобы отображалась загрузка
+    setLoading(true); // спиннер
     try {
       const response = await fetchProducts();
       if (response.data.success && Array.isArray(response.data.data)) {
-        setProducts(response.data.data); // Обновляем состояние с новыми продуктами
+        setProducts(response.data.data); // обновляем состояние с новыми продуктами
       }
     } catch (error) {
       console.error('Error refreshing products', error);
     } finally {
-      setLoading(false); // Скрываем индикатор загрузки
+      setLoading(false); 
     }
   };
 
@@ -73,7 +73,6 @@ const ProductList = () => {
         ))}
       </ul>
 
-      {/* Если состояние showAddProductForm true, показываем форму для добавления продукта */}
       {showAddProductForm && <AddProduct onClose={handleCloseForm} refreshProductList={refreshProductList} />}
     </div>
   );
