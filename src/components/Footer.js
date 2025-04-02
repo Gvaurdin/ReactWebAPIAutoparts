@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
   return (
     <footer style={styles.footer}>
-      <p>&copy; 2025 Autoparts Shop. All rights reserved.</p>
+      <p>&copy; Магазин автозапчастей Autoparts. Все права защищены </p>
     </footer>
   );
 };
