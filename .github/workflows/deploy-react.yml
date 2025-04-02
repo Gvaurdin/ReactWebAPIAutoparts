@@ -15,16 +15,20 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Add SSH Known Hosts
+    - name: Setup SSH Key
       run: |
         mkdir -p ~/.ssh
-        echo "${{ secrets.KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+        chmod 600 ~/.ssh/id_ed25519
+        ssh-keyscan -H gsa-top.ru >> ~/.ssh/known_hosts
+
+    - name: Test SSH Connection
+      run: |
+        ssh -i ~/.ssh/id_ed25519 gvaurdin@gsa-top.ru "echo 'SSH connection successful'"
 
     - name: Deploy React App
-      env:
-        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
       run: |
-        ssh -i <(echo "${{ secrets.SSH_PRIVATE_KEY }}") gvaurdin@gsa-top.ru "
+        ssh -i ~/.ssh/id_ed25519 gvaurdin@gsa-top.ru "
           set -e
           cd /var/www/react-app
           if git fetch origin main && git status | grep -q 'behind'; then
