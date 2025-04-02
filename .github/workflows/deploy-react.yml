@@ -30,7 +30,7 @@ jobs:
       run: |
         ssh -i ~/.ssh/id_ed25519 gvaurdin@gsa-top.ru "
           set -e
-          cd /var/www/react-app
+          cd /home/gvaurdin/ReactWebAPIAutoparts
           if git fetch origin main && git status | grep -q 'behind'; then
             git pull origin main
             docker-compose -f /var/www/docker-compose.yml up -d --build --force-recreate react-autoparts-app
