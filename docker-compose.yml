@@ -6,10 +6,7 @@ services:
       dockerfile: Docker/react/Dockerfile
     restart: always
     volumes:
-      - /var/www/react-app:/usr/src/app
-    labels:
-      - com.centurylinklabs.watchtower.enable=true
-      - com.centurylinklabs.watchtower.lifecycle.pre-update=/hooks/update.sh
+      - /home/gvaurdin/ReactWebAPIAutoparts:/usr/src
     ports:
       - "3000:80"
     networks:
